@@ -15,3 +15,7 @@ models:
     description: "Oliver's Sales Fact"
   - name: sales
     description: "Sales semantic layer for analysts"
+  - name: stg_employee_certifications
+    description: "Staging model for employee certifications. Pulls the certification name, cost, and awarded date out of the json field."
+  - name: fact_certification
+    description: "Oliver's Certification Fact. The grain is one row per certification an employee received (employee + certification + awarded date)."
