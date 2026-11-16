@@ -11,12 +11,13 @@ models:
       - name: position
         tests:
           - accepted_values:
-              values:
-                - "Cashier"
-                - "Customer Service"
-                - "Manager"
-                - "Sales Associate"
-                - "Stock Clerk"
+              arguments:
+                values:
+                  - "Cashier"
+                  - "Customer Service"
+                  - "Manager"
+                  - "Sales Associate"
+                  - "Stock Clerk"
   - name: oliver_dim_product
     description: "Oliver's Product Dimension"
   - name: oliver_dim_store
@@ -35,8 +36,9 @@ models:
       - name: product_key
         tests:
           - relationships:
-              to: ref('oliver_dim_product')
-              field: product_key
+              arguments:
+                to: ref('oliver_dim_product')
+                field: product_key
   - name: sales
     description: "Sales semantic layer for analysts"
   - name: stg_employee_certifications
