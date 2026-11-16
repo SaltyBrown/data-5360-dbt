@@ -7,12 +7,38 @@ models:
     description: "Oliver's Date Dimension"
   - name: oliver_dim_employee
     description: "Oliver's Employee Dimension"
+    columns:
+      - name: position
+        tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - "Cashier"
+                  - "Customer Service"
+                  - "Manager"
+                  - "Sales Associate"
+                  - "Stock Clerk"
   - name: oliver_dim_product
     description: "Oliver's Product Dimension"
   - name: oliver_dim_store
     description: "Oliver's Store Dimension"
+    columns:
+      - name: store_key
+        tests:
+          - unique
   - name: fact_sales
     description: "Oliver's Sales Fact"
+    columns:
+      - name: cust_key
+        description: "A foreign key to the customer dimension"
+        tests:
+          - not_null
+      - name: product_key
+        tests:
+          - relationships:
+              arguments:
+                to: ref('oliver_dim_product')
+                field: product_key
   - name: sales
     description: "Sales semantic layer for analysts"
   - name: stg_employee_certifications
